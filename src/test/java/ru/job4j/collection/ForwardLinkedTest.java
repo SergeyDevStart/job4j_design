@@ -172,4 +172,12 @@ class ForwardLinkedTest {
         assertThatThrownBy(iterator::hasNext)
                 .isInstanceOf(ConcurrentModificationException.class);
     }
+
+    @Test
+    void whenDeleteFirstThenExceptionThrow() {
+        Iterator<Integer> iterator = list.iterator();
+        list.deleteFirst();
+        assertThatThrownBy(iterator::hasNext)
+                .isInstanceOf(ConcurrentModificationException.class);
+    }
 }

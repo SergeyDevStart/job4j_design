@@ -54,6 +54,8 @@ public class ForwardLinked<T> implements Iterable<T> {
         deletNode.item = null;
         deletNode.next = null;
         deletNode = null;
+        size--;
+        modCount++;
         return deletedItem;
     }
 
