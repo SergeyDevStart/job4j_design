@@ -29,7 +29,6 @@ public class ListUtils {
         while (iterator.hasNext()) {
             if (filter.test(iterator.next())) {
                 iterator.set(value);
-                break;
             }
         }
     }
