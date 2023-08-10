@@ -17,6 +17,25 @@ public class SimpleTreeTest {
     }
 
     @Test
+    void whenBinaryThenTrue() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        assertThat(tree.isBinary()).isTrue();
+    }
+
+    @Test
+    void whenBinaryThenFalse() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(3, 4);
+        tree.add(3, 5);
+        tree.add(3, 6);
+        assertThat(tree.isBinary()).isFalse();
+    }
+
+    @Test
     void whenElFindNotExistThenOptionEmpty() {
         Tree<Integer> tree = new SimpleTree<>(1);
         tree.add(1, 2);
