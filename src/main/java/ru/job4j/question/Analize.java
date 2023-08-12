@@ -11,14 +11,14 @@ public class Analize {
         Map<Integer, String> map = current.stream()
                 .collect(Collectors.toMap(User::getId, User::getName));
         for (User user : previous) {
-            if (map.get(user.getId()) == null) {
+            int id = user.getId();
+            String name = map.get(id);
+            if (name == null) {
                 info.setDeleted(info.getDeleted() + 1);
-            } else if (!map.get(user.getId()).equals(user.getName())) {
+            } else if (!name.equals(user.getName())) {
                 info.setChanged(info.getChanged() + 1);
-                map.remove(user.getId());
-            } else {
-                map.remove(user.getId());
             }
+            map.remove(id);
         }
         info.setAdded(info.getAdded() + map.size());
         return info;
