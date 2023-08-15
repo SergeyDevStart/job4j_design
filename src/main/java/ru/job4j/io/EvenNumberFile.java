@@ -1,19 +1,23 @@
 package ru.job4j.io;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 
 public class EvenNumberFile {
     public static void main(String[] args) {
         try (FileInputStream in = new FileInputStream("data/even.txt")) {
-            StringBuilder text = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
             int read;
             while ((read = in.read()) != -1) {
-                if (read % 2 == 0) {
-                    text.append((char) read);
+                builder.append((char) read);
+            }
+            String[] lines = builder.toString().split(System.lineSeparator());
+            for (String str : lines) {
+                if (Integer.parseInt(str) % 2 == 0) {
+                    System.out.println(str);
                 }
             }
-            System.out.println(text);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.getStackTrace();
         }
     }
