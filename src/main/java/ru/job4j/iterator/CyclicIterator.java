@@ -11,7 +11,6 @@ public class CyclicIterator<T> implements Iterator<T> {
 
     public CyclicIterator(List<T> data) {
         this.data = data;
-        this.cursor = 0;
         this.valid = data != null && !data.isEmpty();
     }
 
