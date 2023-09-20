@@ -36,4 +36,13 @@ class ConfigTest {
         assertThatThrownBy(config::load)
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void whenPairWithStrangeLines() {
+        String path = "./data/pair_with_strange_lines.properties";
+        Config config = new Config(path);
+        config.load();
+        assertThat(config.value("keyOne")).isEqualTo("ValueOne=1");
+        assertThat(config.value("keyTwo")).isEqualTo("ValueTwo=");
+    }
 }
