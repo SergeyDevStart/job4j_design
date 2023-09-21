@@ -10,8 +10,8 @@ public class Analysis {
                              new FileWriter(target)
                      ))) {
             boolean worker = true;
-            String[] lines = in.lines().toArray(String[]::new);
-            for (String line : lines) {
+            while (in.ready()) {
+                String line = in.readLine();
                 if (worker && (line.startsWith("500") || line.startsWith("400"))) {
                     worker = false;
                     out.printf("%s%s", line.substring(4), ";");
