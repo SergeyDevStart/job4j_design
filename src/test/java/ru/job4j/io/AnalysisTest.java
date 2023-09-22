@@ -30,7 +30,8 @@ class AnalysisTest {
                     .forEach(sj::add);
         }
         assertThat(sj.toString()).isEqualTo(
-                "10:57:01;10:59:01\r\n"
+                "10:57:01;10:59:01"
+                        + System.lineSeparator()
                         + "11:01:02;11:02:02");
     }
 }
