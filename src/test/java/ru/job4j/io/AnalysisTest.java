@@ -24,14 +24,12 @@ class AnalysisTest {
         File target = tempDir.resolve("target.csv").toFile();
         Analysis analysis = new Analysis();
         analysis.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
-        StringJoiner sj = new StringJoiner(System.lineSeparator());
+        StringJoiner sj = new StringJoiner(" ");
         try (var in = new BufferedReader(new FileReader(target.getAbsolutePath()))) {
             in.lines()
                     .forEach(sj::add);
         }
         assertThat(sj.toString()).isEqualTo(
-                "10:57:01;10:59:01"
-                        + System.lineSeparator()
-                        + "11:01:02;11:02:02");
+                "10:57:01;10:59:01 11:01:02;11:02:02");
     }
 }
