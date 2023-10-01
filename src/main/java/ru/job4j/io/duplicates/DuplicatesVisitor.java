@@ -13,13 +13,7 @@ public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         FileProperty newFile = new FileProperty(attrs.size(), file.getFileName().toString());
-        if (!map.containsKey(newFile)) {
-            List<String> list = new LinkedList<>();
-            list.add(file.toAbsolutePath().toString());
-            map.put(newFile, list);
-        } else {
-            map.get(newFile).add(file.toAbsolutePath().toString());
-        }
+        map.computeIfAbsent(newFile, k -> new LinkedList<>()).add(file.toAbsolutePath().toString());
         return FileVisitResult.CONTINUE;
     }
 
@@ -30,5 +24,12 @@ public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
 
     public Map<FileProperty, List<String>> getMap() {
         return map;
+    }
+
+    public void print() {
+        map.entrySet().stream()
+                .filter(map -> map.getValue().size() > 1)
+                .flatMap(map -> map.getValue().stream())
+                        .forEach(System.out::println);
     }
 }

@@ -12,9 +12,6 @@ public class DuplicatesFinder {
     public static void printDuplicate(Path path) throws IOException {
         DuplicatesVisitor visitor = new DuplicatesVisitor();
         Files.walkFileTree(path, visitor);
-        visitor.getMap().entrySet().stream()
-                .filter(map -> map.getValue().size() > 1)
-                .flatMap(map -> map.getValue().stream())
-                .forEach(System.out::println);
+        visitor.print();
     }
 }
