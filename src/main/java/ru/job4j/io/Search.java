@@ -19,13 +19,13 @@ public class Search {
     }
 
     public static void verification(String[] args) {
-        if (args.length == 0 || args.length > 2) {
+        if (args.length != 2) {
             throw new IllegalArgumentException("Use two parameters: ROOT_FOLDER FILE_EXTENSION");
         }
         if (!Files.isDirectory(Path.of(args[0]))) {
             throw new IllegalArgumentException("Such directory does not exist. Use ROOT_FOLDER.");
         }
-        if (!args[1].startsWith(".")) {
+        if (args[1].lastIndexOf(".") != 0 || args[1].length() < 2) {
             throw new IllegalArgumentException("For second parameter use this format: \".FILE_EXTENSION\"");
         }
     }
