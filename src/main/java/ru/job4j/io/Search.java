@@ -18,7 +18,7 @@ public class Search {
         return searcher.getPaths();
     }
 
-    public static void verification(String[] args) {
+    private static void verification(String[] args) {
         if (args.length != 2) {
             throw new IllegalArgumentException("Use two parameters: ROOT_FOLDER FILE_EXTENSION");
         }
