@@ -1,8 +1,6 @@
 package ru.job4j.io;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
@@ -44,16 +42,6 @@ public class ConsoleChat {
         }
         dialogue.add(line);
         saveLog(dialogue);
-    }
-
-    private static boolean check(String string) {
-        if (STOP.equals(string)) {
-            return false;
-        }
-        if (CONTINUE.equals(string)) {
-            return true;
-        }
-        return true;
     }
 
     private List<String> readPhrases() {
