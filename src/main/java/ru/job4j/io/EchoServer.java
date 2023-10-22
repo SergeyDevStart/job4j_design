@@ -15,9 +15,13 @@ public class EchoServer {
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     String msg = in.readLine();
                     System.out.println(msg);
-                    if ("GET /?msg=Bye HTTP/1.1".equals(msg)) {
-                        out.write("Bye\r\n".getBytes());
-                        server.close();
+                    switch (msg) {
+                        case "GET /?msg=Exit HTTP/1.1" -> {
+                            out.write("closing the server\r\n".getBytes());
+                            server.close();
+                        }
+                        case "GET /?msg=Hello HTTP/1.1" -> out.write("Hello\r\n".getBytes());
+                        default -> out.write("What?\r\n".getBytes());
                     }
                     out.flush();
                 }
