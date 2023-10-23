@@ -8,10 +8,16 @@ public class UsageLog4j {
     private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
 
     public static void main(String[] args) {
-        LOG.trace("trace message");
-        LOG.debug("debug message");
-        LOG.info("info message");
-        LOG.warn("warn message");
-        LOG.error("error message");
+        byte byteType = Byte.MAX_VALUE;
+        short shortType = Short.MAX_VALUE;
+        int intType = Integer.MAX_VALUE;
+        long longType = Long.MAX_VALUE;
+        float floatType = Float.MAX_VALUE;
+        double doubleType = Double.MAX_VALUE;
+        char charType = 'J';
+        boolean booleanType = true;
+        LOG.debug("Info Log: byte {}, short {}, int {}, long {}, float {}, double {}, char {}, boolean {}",
+                byteType, shortType, intType,
+                longType, floatType, doubleType, charType, booleanType);
     }
 }
