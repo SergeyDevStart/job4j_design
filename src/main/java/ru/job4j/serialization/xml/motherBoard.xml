@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<motherboard m2="false" ram="64" formFactor="ATX">
+    <chipset chipset="Intel H610"/>
+    <videoOutputs>
+        <videoOutput>DVI-D</videoOutput>
+        <videoOutput>DisplayPort</videoOutput>
+        <videoOutput>VGA</videoOutput>
+        <videoOutput>HDMI</videoOutput>
+    </videoOutputs>
+</motherboard>
