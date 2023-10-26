@@ -1,13 +1,23 @@
 package ru.job4j.serialization.json;
 
 import java.util.Arrays;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "MotherBoard")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Motherboard {
-    private final boolean m2;
-    private final int ram;
-    private final String formFactor;
-    private final Chipset chipset;
-    private final String[] videoOutputs;
+    @XmlAttribute
+    private boolean m2;
+    @XmlAttribute
+    private int ram;
+    @XmlAttribute
+    private String formFactor;
+    private Chipset chipset;
+    @XmlElementWrapper(name = "videoOutputs")
+    @XmlElement(name = "videoOutput")
+    private String[] videoOutputs;
+
+    public Motherboard() { }
 
     public Motherboard(boolean m2, int ram, String formFactor, Chipset chipset, String[] videoOutputs) {
         this.m2 = m2;

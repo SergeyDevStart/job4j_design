@@ -1,9 +1,16 @@
 package ru.job4j.serialization.json;
 
-public class Chipset {
-    private final String chipset;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
-    Chipset(String chipset) {
+@XmlRootElement(name = "chipset")
+public class Chipset {
+    @XmlAttribute
+    private String chipset;
+
+    public Chipset() { }
+
+    public Chipset(String chipset) {
         this.chipset = chipset;
     }
 
