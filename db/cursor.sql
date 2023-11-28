@@ -1,0 +1,23 @@
+START TRANSACTION;
+
+DECLARE my_cursor SCROLL CURSOR FOR 
+	SELECT * FROM products;
+	
+MOVE LAST FROM my_cursor;
+
+MOVE BACKWARD 6 FROM my_cursor;
+
+FETCH NEXT FROM my_cursor;
+
+MOVE BACKWARD 9 FROM my_cursor;
+
+FETCH NEXT FROM my_cursor;
+
+MOVE BACKWARD 6 FROM my_cursor;
+
+FETCH NEXT FROM my_cursor;
+
+FETCH PRIOR FROM my_cursor;
+
+CLOSE my_cursor;
+COMMIT;
