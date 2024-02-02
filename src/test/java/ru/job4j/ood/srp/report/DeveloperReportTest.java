@@ -19,7 +19,7 @@ class DeveloperReportTest {
         Employee worker = new Employee("Ivan", now, now, 100);
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         store.add(worker);
-        Report report = new DeveloperReport(store, parser);
+        Report developerReport = new DeveloperReport(store, parser);
         StringBuilder expected = new StringBuilder()
                 .append("Name;Hired;Fired;Salary")
                 .append(System.lineSeparator())
@@ -28,6 +28,6 @@ class DeveloperReportTest {
                 .append(parser.parse(worker.getFired())).append(";")
                 .append(worker.getSalary())
                 .append(System.lineSeparator());
-        assertThat(report.generate(employee -> true)).isEqualTo(expected.toString());
+        assertThat(developerReport.generate(employee -> true)).isEqualTo(expected.toString());
     }
 }

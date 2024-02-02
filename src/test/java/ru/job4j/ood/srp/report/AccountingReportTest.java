@@ -23,7 +23,7 @@ class AccountingReportTest {
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         store.add(worker);
         CurrencyConverter converter = new InMemoryCurrencyConverter();
-        Report report = new AccountingReport(store, parser, converter);
+        Report accountingReport = new AccountingReport(store, parser, converter);
         StringBuilder expected = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
                 .append(System.lineSeparator())
@@ -32,6 +32,6 @@ class AccountingReportTest {
                 .append(parser.parse(worker.getFired())).append(" ")
                 .append(converter.convert(Currency.RUB, worker.getSalary(), Currency.USD))
                 .append(System.lineSeparator());
-        assertThat(report.generate(employee -> true)).isEqualTo(expected.toString());
+        assertThat(accountingReport.generate(employee -> true)).isEqualTo(expected.toString());
     }
 }

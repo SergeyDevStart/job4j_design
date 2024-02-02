@@ -20,7 +20,7 @@ class HRReportTest {
         store.add(worker2);
         store.add(worker3);
         store.add(worker1);
-        Report engine = new HRReport(store);
+        Report hrReport = new HRReport(store);
         StringBuilder expected = new StringBuilder()
                 .append("Name; Salary;")
                 .append(System.lineSeparator())
@@ -33,6 +33,6 @@ class HRReportTest {
                 .append(worker1.getName()).append(" ")
                 .append(worker1.getSalary())
                 .append(System.lineSeparator());
-        assertThat(engine.generate(employee -> true)).isEqualTo(expected.toString());
+        assertThat(hrReport.generate(employee -> true)).isEqualTo(expected.toString());
     }
 }
