@@ -15,11 +15,12 @@ public abstract class Park implements ParkSystem {
         this.countFreePlaces = size;
     }
 
+    public abstract boolean checkSizeVehicle(Vehicle vehicle);
+
+    @Override
     public List<Vehicle> findAll() {
         return store;
     }
-
-    public abstract boolean checkSizeVehicle(Vehicle vehicle);
 
     @Override
     public int getFreePlaces() {
