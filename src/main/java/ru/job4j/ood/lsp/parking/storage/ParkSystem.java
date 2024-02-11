@@ -3,6 +3,8 @@ package ru.job4j.ood.lsp.parking.storage;
 import ru.job4j.ood.lsp.parking.model.Vehicle;
 
 public interface ParkSystem {
+    boolean checkSizeVehicle(Vehicle vehicle);
+
     int getFreePlaces();
 
     boolean parkVehicle(Vehicle vehicle);

@@ -7,6 +7,8 @@ import ru.job4j.ood.lsp.parking.storage.CarPark;
 import ru.job4j.ood.lsp.parking.storage.ParkSystem;
 import ru.job4j.ood.lsp.parking.storage.TruckPark;
 
+import java.util.List;
+
 public class ParkingManager {
     private final ParkSystem carPark;
     private final ParkSystem truckPark;
@@ -20,11 +22,11 @@ public class ParkingManager {
         return false;
     }
 
-    public Car getCar(Vehicle vehicle) {
+    public Car getCar(int id) {
         return null;
     }
 
-    public Truck getTruck(Vehicle vehicle) {
+    public Truck getTruck(int id) {
         return null;
     }
 
@@ -34,5 +36,9 @@ public class ParkingManager {
 
     public int getFreePlacesForTruck() {
         return 0;
+    }
+
+    public List<Vehicle> findAll() {
+        return null;
     }
 }

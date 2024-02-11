@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public abstract class Vehicle {
     private final int id;
-    private final int size;
+    protected int size;
 
-    public Vehicle(int id, int size) {
+    public Vehicle(int id) {
         this.id = id;
-        this.size = size;
+        this.size = 1;
     }
 
     public int getId() {

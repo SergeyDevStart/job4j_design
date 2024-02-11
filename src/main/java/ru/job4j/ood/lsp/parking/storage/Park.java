@@ -15,6 +15,10 @@ public abstract class Park implements ParkSystem {
         this.countFreePlaces = size;
     }
 
+    public List<Vehicle> findAll() {
+        return store;
+    }
+
     public abstract boolean checkSizeVehicle(Vehicle vehicle);
 
     @Override
