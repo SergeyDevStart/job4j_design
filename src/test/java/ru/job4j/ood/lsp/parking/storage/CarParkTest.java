@@ -1,6 +1,5 @@
 package ru.job4j.ood.lsp.parking.storage;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.lsp.parking.model.Car;
 import ru.job4j.ood.lsp.parking.model.Truck;
@@ -8,7 +7,6 @@ import ru.job4j.ood.lsp.parking.model.Vehicle;
 
 import static org.assertj.core.api.Assertions.*;
 
-@Disabled
 class CarParkTest {
     @Test
     public void whenCheckSizeCarThenTrue() {
@@ -36,7 +34,8 @@ class CarParkTest {
     public void whenAddCarAndGetCarThenSuccessfully() {
         ParkSystem carPark = new CarPark(1);
         Vehicle car = new Car(1);
-        assertThat(carPark.getVehicle(1)).isEqualTo(car);
+        carPark.parkVehicle(car);
+        assertThat(carPark.getVehicle(1, 1)).isEqualTo(car);
     }
 
     @Test

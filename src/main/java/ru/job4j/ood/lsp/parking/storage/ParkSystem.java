@@ -13,5 +13,5 @@ public interface ParkSystem {
 
     boolean parkVehicle(Vehicle vehicle);
 
-    Vehicle getVehicle(int id);
+    Vehicle getVehicle(int id, int size);
 }

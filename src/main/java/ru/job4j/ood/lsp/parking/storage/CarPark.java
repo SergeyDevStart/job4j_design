@@ -8,7 +8,12 @@ public class CarPark extends Park {
     }
 
     @Override
+    public int resize(Vehicle vehicle) {
+        return vehicle.getSize();
+    }
+
+    @Override
     public boolean checkSizeVehicle(Vehicle vehicle) {
-        return false;
+        return vehicle.getSize() >= 1 && vehicle.getSize() <= countFreePlaces;
     }
 }

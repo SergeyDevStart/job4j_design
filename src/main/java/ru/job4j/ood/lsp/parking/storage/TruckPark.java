@@ -8,7 +8,12 @@ public class TruckPark extends Park {
     }
 
     @Override
+    public int resize(Vehicle vehicle) {
+        return 1;
+    }
+
+    @Override
     public boolean checkSizeVehicle(Vehicle vehicle) {
-        return false;
+        return vehicle.getSize() > 1 && countFreePlaces >= 1;
     }
 }

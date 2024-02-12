@@ -7,6 +7,7 @@ import ru.job4j.ood.lsp.parking.storage.CarPark;
 import ru.job4j.ood.lsp.parking.storage.ParkSystem;
 import ru.job4j.ood.lsp.parking.storage.TruckPark;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingManager {
@@ -19,26 +20,34 @@ public class ParkingManager {
     }
 
     public boolean parkAuto(Vehicle vehicle) {
-        return false;
+        return truckPark.parkVehicle(vehicle) || carPark.parkVehicle(vehicle);
     }
 
-    public Car getCar(int id) {
-        return null;
+    public Car getCar(int id, int size) {
+        return (Car) carPark.getVehicle(id, size);
     }
 
-    public Truck getTruck(int id) {
-        return null;
+    public Truck getTruck(int id, int size) {
+        Truck result;
+        result = (Truck) truckPark.getVehicle(id, size);
+        if (result == null) {
+            result = (Truck) carPark.getVehicle(id, size);
+        }
+        return result;
     }
 
     public int getFreePlacesForCar() {
-        return 0;
+        return carPark.getFreePlaces();
     }
 
     public int getFreePlacesForTruck() {
-        return 0;
+        return truckPark.getFreePlaces();
     }
 
     public List<Vehicle> findAll() {
-        return null;
+        List<Vehicle> result = new ArrayList<>();
+        result.addAll(carPark.findAll());
+        result.addAll(truckPark.findAll());
+        return result;
     }
 }
