@@ -55,4 +55,26 @@ class ControlQualityTest {
         service.distribute(food);
         assertThat(warehouse.findAll()).contains(food);
     }
+
+    @Test
+    public void whenResortThenMovingFromShopToTrash() {
+        LocalDate now = LocalDate.now();
+        Food food = new Bread("Bread", now.minusDays(2), now.plusDays(6), 50);
+        service.distribute(food);
+        assertThat(shop.findAll()).contains(food);
+        food.setExpiryDate(now.minusDays(3));
+        service.resort();
+        assertThat(trash.findAll()).contains(food);
+    }
+
+    @Test
+    public void whenResortThenMovingFromWarehouseToShop() {
+        LocalDate now = LocalDate.now();
+        Food food = new Milk("Milk", now.minusDays(2), now.plusDays(7), 100);
+        service.distribute(food);
+        assertThat(warehouse.findAll()).contains(food);
+        food.setExpiryDate(now.plusDays(5));
+        service.resort();
+        assertThat(shop.findAll()).contains(food);
+    }
 }
